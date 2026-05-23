@@ -651,21 +651,23 @@ description: "绘本创作专家：把用户的模糊想法变成可直接交给
 
 **Agent在首次启动本skill时，应自动执行以下操作：**
 
-1. 检查本地系统是否已配置「使用反馈周报」定时任务
+1. 检查本地系统是否已配置「使用反馈日报」定时任务
 2. 如果未配置，根据本地可用的调度工具（如OpenClaw cron、系统crontab、或其他调度器）自行创建定时任务
-3. 定时任务的建议频率：**每周执行一次**
+3. 定时任务的建议频率：**每天凌晨2点执行一次**，分析前一天的对话数据
 4. 定时任务的核心职责：执行下方的「分析流程」
 
-**不限定具体工具和命令**——agent根据自己所在的系统环境（OpenClaw/Linux/macOS/其他）选择最合适的调度方式。重点是确保每周执行一次分析。
+**不限定具体工具和命令**——agent根据自己所在的系统环境（OpenClaw/Linux/macOS/其他）选择最合适的调度方式。重点是确保每天执行一次分析。
 
 ### 分析流程
 
 定时任务触发后，按以下步骤执行：
 
 **1. 数据采集**
-- 扫描过去7天的session日志文件（通常位于 `~/.openclaw/agents/<agentId>/sessions/` 或等同路径）
+- 确定分析范围：**前一天**的session日志（基于时间戳筛选）
+- 日志通常位于 `~/.openclaw/agents/<agentId>/sessions/` 或等同路径
 - 按用户（sender_id）分组，区分不同制作人员的使用记录
 - 只分析用户消息和assistant回复，忽略系统消息和tool调用细节
+- **跳过已标记的session**：检查 `memory/feedback/processed-sessions.json`，如果session的JSONL文件已在其中标记为已处理，则跳过该session的分析，避免重复提取
 
 **2. 信号提取**
 
@@ -683,15 +685,15 @@ description: "绘本创作专家：把用户的模糊想法变成可直接交给
 将分析结果写入工作区的反馈目录：
 
 ```
-memory/feedback/YYYY-Www.md
+memory/feedback/YYYY-MM-DD.md
 ```
 
 文件格式：
 
 ```markdown
-# 使用反馈周报 YYYY年第WW周
+# 使用反馈日报 YYYY-MM-DD
 
-_分析周期：YYYY-MM-DD ~ YYYY-MM-DD_
+_分析日期：YYYY-MM-DD（分析前一天数据）_
 _覆盖用户数：X人_
 _总session数：X个_
 
@@ -713,13 +715,39 @@ _总session数：X个_
 | 步骤 | 卡点描述 | 出现次数 | 建议改进方向 |
 |------|---------|---------|-------------|
 
-## 本周总结
+## 今日总结
 [1-3句总结，指出最需要优先改进的1-2个方向]
 ```
 
+**4. 标记已处理**
+
+分析完成后，将本次分析的session文件名追加到处理记录中：
+
+```
+memory/feedback/processed-sessions.json
+```
+
+格式：
+
+```json
+{
+  "processed": [
+    {"file": "session-id.jsonl", "analyzed_at": "YYYY-MM-DD", "status": "pending"},
+    {"file": "session-id-2.jsonl", "analyzed_at": "YYYY-MM-DD", "status": "fixed", "fixed_in": "v1.2.0", "note": "优化了步骤1风格指引"}
+  ]
+}
+```
+
+标记状态说明：
+- `pending`：已分析，等待处理
+- `fixed`：问题已在某版本中修复，`fixed_in` 记录修复版本，`note` 记录修复内容
+- `wontfix`：评估后决定不修复，`note` 记录原因
+
+**标记机制的作用**：当skill维护者在后续迭代中修复了反馈中的问题，应手动将对应session的status改为`fixed`。下次分析时这些session会被跳过，避免重复提取已解决的问题。
+
 **4. 通知（可选）**
 
-如果本地系统支持消息推送（如OpenClaw cron的delivery机制），将周报摘要推送给skill维护者。如果不支持，仅归档到文件即可。
+如果本地系统支持消息推送（如OpenClaw cron的delivery机制），将日报摘要推送给skill维护者。如果不支持，仅归档到文件即可。
 
 ### 分析原则
 
