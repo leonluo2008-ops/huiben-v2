@@ -187,6 +187,8 @@ description: "绘本创作专家:把用户的模糊想法变成可直接交给AI
 - S14 波普艺术 - 高对比撞色,视觉冲击力强,适合字母展示
 - S16 治愈梦幻绘本 - 温暖柔和,适合情感类词汇
 
+**锚点记录**:用户确认风格后,将锚点文字记录,在步骤L4中作为「全局风格锚点」使用(与故事模式步骤1保持一致)。
+
 #### 确认词白名单
 
 `["确认", "可以", "没问题", "好", "ok", "c", "y", "继续"]`
@@ -209,8 +211,12 @@ description: "绘本创作专家:把用户的模糊想法变成可直接交给AI
 #### 语境重复页设计规则
 
 - **句式模板**(高度重复,只换一个元素):
+  - "A yellow fish." → "A yellow fish swims." → "A yellow fish swims in the pond."（颜色→动词→介词短语）
+  - "A cute cat." → "A cute cat walks." → "A cute cat walks slowly." → "A cute cat walks in the park."（形容词→动词→副词→介词短语）
+  - "I see a fish." / "I smile at the fish." / "I run in front of the cat."（换主语创造互动感）
   - "The cat sat." / "The cat is on the mat." / "I see a cat."
   - "Look at the cat." / "A big cat." / "A little cat."
+  - "A red apple." → "I eat apples." → "The red apples are sweet."
 - **目标词在每个句子中高亮**(在生图提示词中说明)
 - **每页配不同场景**,但主角(猫咪)外观必须一致
 - **重复次数**:目标词全书至少出现8-10次
@@ -281,6 +287,10 @@ description: "绘本创作专家:把用户的模糊想法变成可直接交给AI
 | 2 | [英文] | [中文] |
 ...
 ```
+
+### 用户交互
+用户选择标题+简介版本（如"用1号标题+2号简介"），确认后进入步骤L4。
+确认词白名单：`["确认", "可以", "没问题", "好", "ok", "继续"]`
 
 #### 句式规则:逐级叠加(Expanding Sentence Pattern)
 
