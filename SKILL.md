@@ -1213,6 +1213,7 @@ cat 旁白原文：一只小猫 + 一顶帽子 + 一个垫子，串联 hat、mat
 
 风格备选库位于 `references/style-library.md`，包含16种预设风格。
 **领读旁白核心原则**（必读）：`references/领读旁白核心原则.md` —— 目标词必须在每行旁白中出现，不能丢失。
+**Darwin优化案例**（参考）：`references/darwin-case-study-20260527.md` —— 本skill经Darwin评估后的修复记录，含执行enforcement教训。
 
 ## 通用规则(两种模式均适用)
 
