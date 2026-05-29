@@ -230,6 +230,7 @@ description: "绘本创作专家:把用户的模糊想法变成可直接交给AI
   - "The cat sat." / "The cat is on the mat." / "I see a cat."
   - "Look at the cat." / "A big cat." / "A little cat."
   - "A red apple." → "I eat apples." → "The red apples are sweet."
+  - "Jump high!" → "Jump low!" → **注意：high对应"高高"，low对应"跳下来/蹲下"而非"低低"——"XX低低"不是自然中文表达**
 - **目标词在每个句子中高亮**(在生图提示词中说明)
 - **每页配不同场景**,但主角(猫咪)外观必须一致
 - **重复次数**:目标词全书至少出现8-10次
