@@ -721,17 +721,16 @@ cat 旁白原文：一只小猫 + 一顶帽子 + 一个垫子，串联 hat、mat
 
 | 序号 | 英文 | 中文 |
 |------|------|------|
-| 1 | CAT | 猫咪 CAT |
-| 2 | A cute cat | 一只可爱的猫，cat |
-| 3 | A cute cat walks | 一只可爱的猫，cat 在走 |
-| 4 | A cute cat walks slowly | 一只可爱的猫，cat 在慢慢地走 |
-| 5 | A cute cat walks in the park | 一只可爱的猫，cat 在公园里走 |
-| 6 | I run in front of the cat | 我在猫 cat 前面跑 |
-| 7 | Cat, hat, mat, bat — they all say -AT! | cat、帽子、垫子、蝙蝠，都押AT！ |
+| 1 | CAT! | 猫咪 CAT！ |
+| 2 | A cute cat | 可爱的猫，a cute cat |
+| 3 | A cute cat walks | 可爱的猫在走，a cute cat walks |
+| 4 | A cute cat walks slowly | 可爱的猫慢慢地走，a cute cat walks slowly |
+| 5 | A cute cat walks in the park | 可爱的猫在公园里走，a cute cat walks in the park |
+| 6 | I run in front of the cat | 我在猫前面跑，I run in front of the cat |
+| 7 | CAT! CAT! CAT! | 猫咪！猫咪！猫咪！CAT! CAT! CAT! |
 | 8 | I love CAT! | 我爱 CAT！ |
 
-> **双语同现强制要求**：cat/CAT 必须在每行中文里出现，句尾或句中均可。
-```
+> **双语同现强制要求**：每行中文含完整英文短语（cat/CAT完整不拆分），格式为 `[完整中文翻译] [英文核心短语]`。英文在前或中文在前均可，两者用空格或逗号分开。
 
 #### L4 生图提示词产出
 
@@ -775,10 +774,7 @@ cat 旁白原文：一只小猫 + 一顶帽子 + 一个垫子，串联 hat、mat
 
 > 注:示例仅展示格式和句式叠加规律,实际创作时标题/简介/旁白数量和内容以用户确认为准。
 
-> 注:示例仅展示格式和句式叠加规律,实际创作时标题/简介/旁白数量和内容以用户确认为准。
-
-#### L4 生图提示词产出(节选封面+P1)
-#### L4 生图提示词产出(节选封面+P1+P5)
+#### L4 生图提示词产出（节选封面+P1+P5）
 
 ````我会给你一段文字,是领读文案和对应的生图提示词,请提取生图提示词,并生成图片;
 注意:不要在图片中显示领读文案中的中文翻译,这些仅供参考;
