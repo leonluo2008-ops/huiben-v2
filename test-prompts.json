@@ -1,26 +1,20 @@
 [
   {
     "id": 1,
-    "prompt": "画一个 go 的领读绘本，目标年龄5岁",
-    "expected": "输出包含封面+内页结构，无字母拆解/拼读示范页，目标词 go 在每页中文旁白中出现",
-    "test_dimension": "字母拆解移除验证"
+    "prompt": "画一个 car 的领读绘本，目标年龄5岁，内页至少8页",
+    "expected": "8个语境页，用换颜色/换场景/换主语等维度自然扩展，不用词族凑数",
+    "test_dimension": "语境页扩展规则：8页时不强制词族页"
   },
   {
     "id": 2,
-    "prompt": "plane 的简介，10字以内",
-    "expected": "目标词 plane 占绝对主角，词族词（crane/lane等）不出现或仅作点缀",
-    "test_dimension": "简介核心词验证"
+    "prompt": "cat 的页面结构，目标年龄5岁，需要7页",
+    "expected": "自然叠加够7页，不用词族凑数",
+    "test_dimension": "语境页扩展规则：7页自然叠加"
   },
   {
     "id": 3,
-    "prompt": "5岁孩子的 go 旁白",
-    "expected": "不使用叠词（高高、慢慢等），用 很+形容词 或自然口语",
-    "test_dimension": "叠词年龄验证"
-  },
-  {
-    "id": 4,
-    "prompt": "go 领读绘本第3页旁白",
-    "expected": "中文旁白包含目标词 go（中英双语同现）",
-    "test_dimension": "双语同现验证"
+    "prompt": "画一个 yellow 的领读绘本，5岁，8页",
+    "expected": "8页全语境页，换颜色是主要扩展方式（yellow car → yellow sun → yellow duck）",
+    "test_dimension": "语境页扩展规则：颜色词目标词用换属性扩展"
   }
 ]
