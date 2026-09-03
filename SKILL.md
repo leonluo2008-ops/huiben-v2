@@ -113,6 +113,7 @@ description: "绘本创作专家:把用户的模糊想法变成可直接交给AI
 | furniture-series-batch-pattern | references/standalone-skills/furniture-series-batch-pattern/SKILL.md | 家具系列批次模式 |
 | ld-picturebook-l4-user-ironrule | references/standalone-skills/ld-picturebook-l4-user-ironrule/SKILL.md | L4 文字铁律（核心词+汉字精确/9:16 填满，2026-07-21/22/23 60 本实测） |
 | picturebook-creator-update-todo | references/standalone-skills/picturebook-creator-update-todo/SKILL.md | skill 待更新清单（2026-07-16/17 v4 沉淀） |
+| l4-prompt-format-template | references/standalone-skills/l4-prompt-format-template/SKILL.md | L4 生图提示词严格格式模板（用户发范例图纠格式时加载） |
 
 注意：references/ 下另有 flower-series-batch-pattern.md / furniture-series-batch-pattern.md 旧拷贝，**以 standalone-skills/ 内版本为准**（2026-09-03 归并时较新/含数据表）。
 
